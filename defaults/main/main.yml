@@ -1,0 +1,22 @@
+---
+# defaults file for ansible-vultr
+
+# ssh_keys
+vultr_sshkeys:
+  - name: myown_sshkey
+    ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+# default values
+vultr_auto_backup_enabled: no
+vultr_force: no # reboot on changes when is required 
+vultr_ipv6_enabled: no
+vultr_notify_activate: yes
+vultr_osid: 445 # Ubuntu 21.04 x64 
+vultr_planid: 201 # 1024MB / 25GB SSD
+vultr_private_network_enabled: yes
+vultr_region: Frankfurt
+vultr_sshkeysid: 
+  "{{ vultr_sshkeys | json_query('[*].name') | list }}"
+
+# servers
+vultr_servers: []

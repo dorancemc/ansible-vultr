@@ -1,0 +1,9 @@
+---
+
+- name: "validating the status for ssh_key {{ sshkey.name }}"
+  ngine_io.vultr.vultr_ssh_key:
+    api_key: "{{ vultr_api_key }}"
+    name: "{{ sshkey.name }}"
+    ssh_key: "{{ sshkey.ssh_key | default('') }}"
+    state: "{{ sshkey.state | default('present') }}"
+  tags: vultr_sshkeys

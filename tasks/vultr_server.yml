@@ -1,0 +1,22 @@
+---
+
+- name: "Provision Vultr server: {{ server.name }}"
+  ngine_io.vultr.vultr_server:
+    api_account: default
+    api_key: "{{ vultr_api_key }}"
+    auto_backup_enabled: "{{ server.auto_backup_enabled | default(vultr_auto_backup_enabled) }}"
+    force: "{{ server.force | default(vultr_force) }}"
+    hostname: "{{ server.hostname | default(server.name) }}"
+    ipv6_enabled: "{{ server.ipv6_enabled | default(vultr_ipv6_enabled) }}"
+    notify_activate: "{{ server.notify_activate | default(vultr_notify_activate) }}"
+    os: "{{ server.os | default(vultr_osid) }}"
+    plan: "{{ server.plan | default(vultr_planid) }}" 
+    private_network_enabled: "{{ server.private_network_enabled | default(vultr_private_network_enabled) }}"
+    region: "{{ server.region | default(vultr_region) }}"
+    state: "{{ server.state | default('present') }}"
+    snapshot: "{{ server.snapshot | default('') }}"
+    ssh_keys: "{{ server.ssh_keys | default(vultr_sshkeysid) }}"
+    tag: "{{ server.tag | default('') }}"
+    name: "{{ server.name }}"
+  register: created_server
+  tags: "{{ server.name }}"

@@ -1,0 +1,12 @@
+---
+# tasks file for ansible-vultr
+
+- include: "vultr_sshkey.yml"
+  with_items: "{{ vultr_sshkeys }}"
+  loop_control:
+    loop_var: sshkey
+
+- include: "vultr_server.yml"
+  with_items: "{{ vultr_servers }}"
+  loop_control:
+    loop_var: server
