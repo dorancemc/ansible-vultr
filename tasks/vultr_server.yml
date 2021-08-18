@@ -21,6 +21,14 @@
   register: created_server
   tags: "{{ server.name }}"
 
+- name: ping to {{ created_server.vultr_server.v4_main_ip }}
+  shell: ping -c 3 -q {{ created_server.vultr_server.v4_main_ip }}
+  register: vhost_running
+  until: vhost_running.rc == 0
+  retries: 10
+  delay: 20
+  when: (server.state is not defined or (server.state is defined and server.state != 'absent')) and (ping_vult_hosts is defined and ping_vult_hosts)
+
 - name: vult server info
   debug:
     msg:
