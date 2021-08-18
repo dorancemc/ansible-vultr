@@ -41,4 +41,4 @@
   include_role: 
     name: "{{ role_nsrecords.name }}"
     tasks_from: "{{ role_nsrecords.task | default ('main') }}"
-  when: role_nsrecords is defined and role_nsrecords.run
+  when: created_server.changed and role_nsrecords is defined and role_nsrecords.run
