@@ -36,3 +36,9 @@
       - "Default Password: {{ created_server.vultr_server.default_password }}"
       - "url kvm connection: {{ created_server.vultr_server.kvm_url }}"
   when: (server.state is not defined or (server.state is defined and server.state != 'absent')) and (vutlr_print_data is defined and vutlr_print_data)
+
+- name: include role to update ns records
+  include_role: 
+    name: "{{ role_nsrecords.name }}"
+    tasks_from: "{{ role_nsrecords.task | default ('main') }}"
+  when: role_nsrecords is defined and role_nsrecords.run

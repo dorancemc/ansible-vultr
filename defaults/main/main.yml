@@ -24,3 +24,7 @@ vultr_servers: []
 #
 vultr_ping_host: true #wait for successful ping response
 vutlr_print_data: true #print data after creation
+role_nsrecords: #role to include to update ns records with another role
+  name: none
+  task: main
+  run: false
