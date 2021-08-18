@@ -20,3 +20,11 @@
     name: "{{ server.name }}"
   register: created_server
   tags: "{{ server.name }}"
+
+- name: vult server info
+  debug:
+    msg:
+      - "Public IPv4 Address: {{ created_server.vultr_server.v4_main_ip }}"
+      - "Default Password: {{ created_server.vultr_server.default_password }}"
+      - "url kvm connection: {{ created_server.vultr_server.kvm_url }}"
+  when: (server.state is not defined or (server.state is defined and server.state != 'absent')) and (print_vult_data is defined and print_vult_data)

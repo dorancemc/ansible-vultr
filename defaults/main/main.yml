@@ -20,3 +20,6 @@ vultr_sshkeysid:
 
 # servers
 vultr_servers: []
+
+#
+print_vult_data: true #print data after creation
