@@ -27,7 +27,7 @@
   until: vhost_running.rc == 0
   retries: 10
   delay: 20
-  when: (server.state is not defined or (server.state is defined and server.state != 'absent')) and (vultr_ping_host is defined and vultr_ping_host)
+  when: created_server.changed and (server.state is not defined or (server.state is defined and server.state != 'absent')) and (vultr_ping_host is defined and vultr_ping_host)
 
 - name: vult server info
   debug:
