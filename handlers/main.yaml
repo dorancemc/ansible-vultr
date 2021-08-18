@@ -1,0 +1,5 @@
+---
+
+- name: update dns records
+  import_playbook: "{{ vultr_dns_records }}"
+

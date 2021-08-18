@@ -22,5 +22,5 @@ vultr_sshkeysid:
 vultr_servers: []
 
 #
-ping_vult_hosts: true #wait for successful ping response
-print_vult_data: true #print data after creation
+vultr_ping_host: true #wait for successful ping response
+vutlr_print_data: true #print data after creation
